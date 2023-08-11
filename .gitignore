@@ -1,0 +1,27 @@
+# Logs and databases #
+######################
+*.log
+logs
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.vscode
+
+# VSC workspaces #
+*.code-workspace
+*.vcf
+*.png
+
+# Specific #
+###########################
+/vcards/
+/qrcodes/
+input.csv
+input*
