@@ -1,2 +1,2 @@
-id,firstname,lastname,email,cell
-1,John,Doe,john.doe@email.com,+1 123 4567
+id,email,cell
+1,john.doe@email.com,+1 123 4567

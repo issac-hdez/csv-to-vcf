@@ -19,10 +19,14 @@ def main():
             
             # Set variables for easy usage
             id = row["id"]
-            firstname = row["firstname"]
-            lastname = row["lastname"]
             email = row["email"]
             cell = row["cell"]
+
+            # Get first and last name from email (first.last@aurom.net)
+            temp_name = email.split("@")
+            name = temp_name[0].split(".")
+            firstname = name[0].title()
+            lastname = name[1].title()
 
             # Create vcf card
             vcard = open("vcards/"+id+".vcf", "w")
@@ -56,8 +60,7 @@ def main():
                     ORG:AUROM;
                     EMAIL;type=INTERNET;type=WORK;type=pref:'''+email+'''
                     TEL;type=CELL;type=VOICE;type=pref:'''+cell+'''
-                    TEL;type=WORK;type=VOICE:+52 614 417 4040
-                    URL;type=WORK;type=pref:https://www.aurom.net
+                    URL;type=WORK;type=pref:aurom.net
                     END:VCARD'''))
             # Encoding data using make() function
             img = qrcode.make(data)
@@ -66,6 +69,8 @@ def main():
 
             # Count processed lines
             line_count += 1
+
+            print ("Processed: " + email)
 
 
         print(f'Processed {line_count} lines.')
