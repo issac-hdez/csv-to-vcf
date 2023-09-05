@@ -1,2 +1,2 @@
-id,email,cell
-1,john.doe@email.com,+1 123 4567
+id,bloodType,email,passport,ine,cell,position
+1,AB-,john.doe@example.com,ASASD123123,12341231,+52 (123) 456-7890,management

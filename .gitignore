@@ -19,9 +19,9 @@ Thumbs.db
 *.vcf
 *.png
 
+people/
 # Specific #
 ###########################
-/vcards/
-/qrcodes/
+vcards/
 input.csv
 input*

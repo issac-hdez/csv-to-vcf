@@ -3,6 +3,7 @@
 import sys
 import csv
 import qrcode
+import os
 from textwrap import dedent
 
 def main():
@@ -18,15 +19,49 @@ def main():
                 line_count += 1
             
             # Set variables for easy usage
-            id = row["id"]
+            id_real = row["id"]
+            id = id_real.zfill(4)
+            blood_type = row["bloodType"]
             email = row["email"]
+            passport = row["passport"]
+            ine = row["ine"]
             cell = row["cell"]
+            position = row["position"]
 
             # Get first and last name from email (first.last@aurom.net)
             temp_name = email.split("@")
             name = temp_name[0].split(".")
             firstname = name[0].title()
             lastname = name[1].title()
+
+            # Create folder to store files
+            folder = './people/' + id
+            try:
+                os.mkdir(folder)
+            except:
+                print ("Could not create folder " + folder)
+
+            # Select photo id to print from ine / passport
+            if passport != "NULL":
+                print_id = passport
+            elif ine != "NULL":
+                print_id = ine
+            else:
+                print_id = "Missing Photo ID"
+
+            # Create info text file
+            info = open("people/"+id+"/"+id+"_info.txt", "x")
+            info.write(
+                       firstname + " " + lastname + "\n" +
+                       position + "\n" +
+                       id + "\n" +
+                       blood_type + "\n" +
+                       cell + "\n" +
+                       email + "\n" +
+                       print_id + "\n\n\n" +
+                       "https://vcard.aurom.net/people/"+id+".vcf"
+                       )
+            info.close()
 
             # Create vcf card
             vcard = open("vcards/"+id+".vcf", "w")
@@ -49,7 +84,6 @@ def main():
                     END:VCARD'''))
             vcard.close()
 
-
             # Create QR code, less information to fit on the code
             # Data to be encoded
             data = (dedent('''\
@@ -65,7 +99,7 @@ def main():
             # Encoding data using make() function
             img = qrcode.make(data)
             # Saving as an image file
-            img.save('qrcodes/'+id+'.png')
+            img.save("people/"+id+"/"+id+".png")
 
             # Count processed lines
             line_count += 1
