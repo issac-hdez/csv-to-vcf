@@ -19,20 +19,19 @@ def main():
                 line_count += 1
             
             # Set variables for easy usage
-            id_real = row["id"]
-            id = id_real.zfill(4)
+            id = row["id"].zfill(4)
             blood_type = row["bloodType"]
             email = row["email"]
             passport = row["passport"]
             ine = row["ine"]
             cell = row["cell"]
-            position = row["position"]
+            position = row["position"].upper()
 
             # Get first and last name from email (first.last@aurom.net)
             temp_name = email.split("@")
             name = temp_name[0].split(".")
-            firstname = name[0].title()
-            lastname = name[1].title()
+            firstname = name[0].title().upper()
+            lastname = name[1].title().upper()
 
             # Create folder to store files
             folder = './people/' + id
@@ -58,7 +57,7 @@ def main():
                        blood_type + "\n" +
                        cell + "\n" +
                        email + "\n" +
-                       print_id + "\n\n\n" +
+                       print_id.upper() + "\n\n\n" +
                        "https://vcard.aurom.net/people/"+id+".vcf"
                        )
             info.close()
