@@ -30,8 +30,8 @@ def main():
             # Get first and last name from email (first.last@aurom.net)
             temp_name = email.split("@")
             name = temp_name[0].split(".")
-            firstname = name[0].title().upper()
-            lastname = name[1].title().upper()
+            firstname = name[0].title()
+            lastname = name[1].title()
 
             # Create folder to store files
             folder = './people/' + id
@@ -51,14 +51,14 @@ def main():
             # Create info text file
             info = open("people/"+id+"/"+id+"_info.txt", "x")
             info.write(
-                       firstname + " " + lastname + "\n" +
+                       firstname.upper() + " " + lastname.upper() + "\n" +
                        position + "\n" +
                        id + "\n" +
                        blood_type + "\n" +
                        cell + "\n" +
                        email + "\n" +
                        print_id.upper() + "\n\n\n" +
-                       "https://vcard.aurom.net/people/"+id+".vcf"
+                       "vcard.aurom.net/people/"+id+".vcf"
                        )
             info.close()
 
