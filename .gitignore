@@ -20,6 +20,7 @@ Thumbs.db
 *.png
 
 people/
+php_files/
 # Specific #
 ###########################
 vcards/

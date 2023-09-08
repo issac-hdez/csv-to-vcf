@@ -49,7 +49,7 @@ def main():
                 print_id = "Missing Photo ID"
 
             # Create info text file
-            info = open("people/"+id+"/"+id+"_info.txt", "x")
+            info = open("people/"+id+"/"+id+"_info.txt", "w")
             info.write(
                        firstname.upper() + " " + lastname.upper() + "\n" +
                        position + "\n" +
@@ -58,9 +58,14 @@ def main():
                        cell + "\n" +
                        email + "\n" +
                        print_id.upper() + "\n\n\n" +
-                       "vcard.aurom.net/people/"+id+".vcf"
+                       "vcard.aurom.net/people/"+id
                        )
             info.close()
+
+            # Create php file
+            php_file = open("php_files/"+id+".php", "w")
+            php_file.write('<?php header("Location: /people/vcard/'+id+'.vcf"); ?>')
+            php_file.close()
 
             # Create vcf card
             vcard = open("vcards/"+id+".vcf", "w")
