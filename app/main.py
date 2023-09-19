@@ -41,10 +41,10 @@ def main():
                 print ("Could not create folder " + folder)
 
             # Select photo id to print from ine / passport
-            if passport != "NULL":
-                print_id = passport
-            elif ine != "NULL":
+            if ine != "NULL":
                 print_id = ine
+            elif passport != "NULL":
+                print_id = passport
             else:
                 print_id = "Missing Photo ID"
 
