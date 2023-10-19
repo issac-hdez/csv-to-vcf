@@ -26,3 +26,4 @@ php_files/
 vcards/
 input.csv
 input*
+csv-venv/
